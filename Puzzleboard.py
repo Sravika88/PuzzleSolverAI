@@ -28,3 +28,30 @@ class PuzzleBoard:
         :return: True if current state is the goal state, else False.
         """
         return self.state == goal_state
+
+class PuzzleBoard:
+    # Existing methods...
+
+    def generate_moves(self):
+        """
+        Generate all possible moves for the empty tile.
+        :return: List of tuples where each tuple represents a move (row, col).
+        """
+        row, col = self.empty_tile
+        moves = []
+
+        # Define potential moves: up, down, left, right
+        potential_moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+
+        for move in potential_moves:
+            new_row = row + move[0]
+            new_col = col + move[1]
+
+            # Check if the move is within bounds
+            if 0 <= new_row < len(self.state) and 0 <= new_col < len(self.state[0]):
+                moves.append((new_row, new_col))
+
+        return moves
+
+
+

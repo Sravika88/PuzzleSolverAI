@@ -33,3 +33,26 @@ def bfs(initial_state, goal_state):
             queue.append((new_state, path + [current_state]))
     
     return None  # Return None if no solution is found
+
+if __name__ == "__main__":
+    initial_state = [
+        [1, 2, 3],
+        [4, 0, 5],
+        [6, 7, 8]
+    ]
+    goal_state = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 0]
+    ]
+    
+    solution = bfs(initial_state, goal_state)
+    if solution:
+        print("Solution found!")
+        for step in solution:
+            for row in step:
+                print(row)
+            print()
+    else:
+        print("No solution exists.")
+

@@ -4,22 +4,15 @@ def dfs(initial_state, goal_state):
     print("Debug: Starting DFS execution.")
     stack = [initial_state]  # Use a stack for DFS
     visited = set()  # To track visited states
-    iteration_count = 0
-    max_iterations = 100  # Prevent infinite loops
 
     while stack:
-        iteration_count += 1
-        if iteration_count > max_iterations:
-            print("Debug: Exceeded max iterations. Stopping.")
-            break
-
         current_board = stack.pop()  # Get the last added state
         print(f"Exploring state:\n{current_board.state}")
         visited.add(current_board.format_state())  # Mark as visited
 
         # Check if the current state is the goal
         if current_board.is_goal_state(goal_state):
-            print("Debug: Solution found!")
+            print("Solution found!")
             return current_board.state
 
         # Generate possible moves and add to the stack if not visited
@@ -27,7 +20,7 @@ def dfs(initial_state, goal_state):
             if move.format_state() not in visited:
                 stack.append(move)
 
-    print("Debug: No solution found!")
+    print("No solution found!")
     return None
 
 

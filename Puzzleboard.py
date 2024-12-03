@@ -29,7 +29,7 @@ class PuzzleBoard:
     def generate_moves(self):
         """
         Generate all possible moves for the empty tile.
-        :return: List of new PuzzleBoard objects after valid moves.
+        :return: List of PuzzleBoard objects with new states.
         """
         row, col = self.empty_tile
         moves = []
@@ -43,37 +43,36 @@ class PuzzleBoard:
 
             # Check if the move is within bounds
             if 0 <= new_row < len(self.state) and 0 <= new_col < len(self.state[0]):
-                new_state = [row[:] for row in self.state]  # Create a deep copy of the current state
-                # Swap the empty tile with the target tile
+                # Create a new state by swapping the empty tile
+                new_state = [row[:] for row in self.state]
                 new_state[row][col], new_state[new_row][new_col] = new_state[new_row][new_col], new_state[row][col]
-                moves.append(PuzzleBoard(new_state))  # Create a new PuzzleBoard object for the new state
+                moves.append(PuzzleBoard(new_state))
 
         return moves
 
     def format_state(self):
         """
-        Generate a hashable format of the current state for tracking visited nodes.
-        :return: A string representing the state.
+        Format the board state into a unique string representation.
+        This helps in identifying visited states.
+        :return: A string representation of the board state.
         """
-        return str(self.state)
+        return ''.join(str(tile) for row in self.state for tile in row)
 
     def __str__(self):
         """
-        Format the puzzle board state for printing.
-        :return: A formatted string representing the board.
+        Format the board for printing.
+        :return: A string representation of the board.
         """
-        return '\n'.join([' '.join(map(str, row)) for row in self.state])
+        return '\n'.join(' '.join(map(str, row)) for row in self.state)
 
-# Test Code
+
 if __name__ == "__main__":
-    # Test PuzzleBoard functionality
-    initial_state = [[1, 2, 3], [4, 5, 0], [6, 7, 8]]
-    board = PuzzleBoard(initial_state)
-
-    print("Initial State:")
+    # Test the PuzzleBoard class
+    board = PuzzleBoard([[1, 2, 3], [4, 5, 0], [6, 7, 8]])
+    print("Initial Board:")
     print(board)
-
     print("\nPossible Moves:")
     for move in board.generate_moves():
         print(move)
         print("---")
+    print("Formatted State:", board.format_state())

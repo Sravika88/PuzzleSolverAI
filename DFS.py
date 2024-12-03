@@ -1,9 +1,12 @@
 from PuzzleBoard import PuzzleBoard
 
 def dfs(initial_state, goal_state):
+    """
+    Depth-First Search (DFS) implementation for the 8-puzzle problem.
+    """
     stack = [initial_state]  # Use a stack for DFS
     visited = set()  # To track visited states
-    
+
     while stack:
         current_board = stack.pop()  # Get the last added state
         visited.add(current_board.format_state())  # Mark as visited
@@ -35,6 +38,8 @@ if __name__ == "__main__":
 
     # Print the solution steps if found
     if solution_path:
-        print("Solution path:")
+        print("\nSolution path:")
         for step in solution_path:
             print(step)
+    else:
+        print("No solution path could be found.")

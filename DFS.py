@@ -1,15 +1,21 @@
 from PuzzleBoard import PuzzleBoard
 
 def dfs(initial_state, goal_state):
+    print("Starting DFS...")
     stack = [initial_state]  # Use a stack for DFS
     visited = set()  # To track visited states
+    iteration_count = 0
+    max_iterations = 100  # Prevent infinite loops
 
     while stack:
+        iteration_count += 1
+        if iteration_count > max_iterations:
+            print("Reached max iterations. Exiting.")
+            break
+        
         current_board = stack.pop()  # Get the last added state
-        visited.add(current_board.format_state())  # Mark as visited
-
-        # Print the current state being explored
         print(f"Exploring state:\n{current_board}")
+        visited.add(current_board.format_state())  # Mark as visited
 
         # Check if the current state is the goal
         if current_board.is_goal_state(goal_state):
@@ -35,4 +41,7 @@ if __name__ == "__main__":
 
     # Print the solution steps if found
     if solution:
-        print("Solution found!
+        print("Solution path:")
+        print(solution)
+    else:
+        print("No solution path could be found.")

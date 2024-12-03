@@ -1,7 +1,7 @@
 from PuzzleBoard import PuzzleBoard
 
 def dfs(initial_state, goal_state):
-    print("Starting DFS...")
+    print("Debug: Starting DFS execution.")
     stack = [initial_state]  # Use a stack for DFS
     visited = set()  # To track visited states
     iteration_count = 0
@@ -10,24 +10,24 @@ def dfs(initial_state, goal_state):
     while stack:
         iteration_count += 1
         if iteration_count > max_iterations:
-            print("Reached max iterations. Exiting.")
+            print("Debug: Exceeded max iterations. Stopping.")
             break
-        
+
         current_board = stack.pop()  # Get the last added state
-        print(f"Exploring state:\n{current_board}")
+        print(f"Exploring state:\n{current_board.state}")
         visited.add(current_board.format_state())  # Mark as visited
 
         # Check if the current state is the goal
         if current_board.is_goal_state(goal_state):
-            print("Solution found!")
-            return current_board
+            print("Debug: Solution found!")
+            return current_board.state
 
         # Generate possible moves and add to the stack if not visited
         for move in current_board.generate_moves():
             if move.format_state() not in visited:
                 stack.append(move)
 
-    print("No solution found!")
+    print("Debug: No solution found!")
     return None
 
 

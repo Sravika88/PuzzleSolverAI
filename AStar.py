@@ -1,14 +1,16 @@
-from PuzzleBoard import PuzzleBoard
+from Assignment.Puzzleboard import PuzzleBoard
+from heapq import heappush, heappop
+from itertools import count
 
 def a_star(initial_state, goal_state):
-    from heapq import heappush, heappop
     open_list = []
-    heappush(open_list, (0, initial_state))
+    counter = count()  # Unique sequence count to handle ties in f_cost
+    heappush(open_list, (0, next(counter), initial_state))  # Push (f_cost, tie-breaker, PuzzleBoard)
     visited = set()
     nodes_explored = 0
 
     while open_list:
-        _, current_board = heappop(open_list)
+        f_cost, _, current_board = heappop(open_list)  # Retrieve (f_cost, tie-breaker, PuzzleBoard)
         nodes_explored += 1
         visited.add(current_board.format_state())
 
@@ -21,7 +23,7 @@ def a_star(initial_state, goal_state):
                 g_cost = 0  # Replace with actual cost logic
                 h_cost = 0  # Replace with heuristic calculation
                 f_cost = g_cost + h_cost
-                heappush(open_list, (f_cost, move))
+                heappush(open_list, (f_cost, next(counter), move))  # Push with tie-breaker
 
     print("No solution found!")
     return None, nodes_explored

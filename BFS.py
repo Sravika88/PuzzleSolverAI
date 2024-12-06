@@ -1,6 +1,6 @@
 # BFS.py
 # Implements the Breadth-First Search algorithm for solving the 8-puzzle problem.
-from Assignment.puzzleboard import PuzzleBoard
+from PuzzleSolverAI.puzzleboard import PuzzleBoard
 from collections import deque
 
 def bfs(initial_state, goal_state):

@@ -2,7 +2,7 @@ import time
 from BFS import bfs
 from DFS import dfs
 from AStar import a_star
-from Assignment.Puzzleboard import PuzzleBoard
+from PuzzleSolverAI.Puzzleboard import PuzzleBoard
 
 def compare_algorithms(initial_state, goal_state):
     results = {}

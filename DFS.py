@@ -1,4 +1,4 @@
-from PuzzleSolverAI.Puzzleboard import PuzzleBoard
+from Puzzleboard import PuzzleBoard
 
 def dfs(initial_state, goal_state):
     """
@@ -26,7 +26,7 @@ def dfs(initial_state, goal_state):
 
     return None  # Return None if no solution is found
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     initial_state = [
         [1, 2, 3],
         [4, 0, 5],

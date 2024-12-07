@@ -1,4 +1,4 @@
-from Assignment.Puzzleboard import PuzzleBoard
+from PuzzleSolverAI.Puzzleboard import PuzzleBoard
 
 def dfs(initial_state, goal_state):
     """

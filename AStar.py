@@ -1,4 +1,4 @@
-from PuzzleSolverAI.Puzzleboard import PuzzleBoard
+from Puzzleboard import PuzzleBoard
 from heapq import heappush, heappop
 from itertools import count
 
@@ -25,10 +25,9 @@ def a_star(initial_state, goal_state):
                 f_cost = g_cost + h_cost
                 heappush(open_list, (f_cost, next(counter), move))  # Push with tie-breaker
 
-    print("No solution found!")
     return None, nodes_explored
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     initial_state = PuzzleBoard([[1, 2, 3], [4, 5, 0], [6, 7, 8]])
     goal_state = [[1, 2, 3], [4, 5, 6], [7, 8, 0]]
 

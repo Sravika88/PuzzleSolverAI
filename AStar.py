@@ -1,4 +1,4 @@
-from Assignment.Puzzleboard import PuzzleBoard
+from PuzzleSolverAI.Puzzleboard import PuzzleBoard
 from heapq import heappush, heappop
 from itertools import count
 

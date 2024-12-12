@@ -12,6 +12,8 @@ This project implements search algorithms (BFS, DFS, and A*) to solve the 8-puzz
   - Execution Time
   - Nodes Expanded
   - Solution Path Optimality
+## Project Presentation
+The presentation file for this project is available [here](ppt1.pptx).
 
 ## How to Run
 1. Clone the repository:
@@ -53,6 +55,3 @@ The `compare_algorithms.py` script is designed to compare the performance of BFS
 Run the script as follows:
 ```bash
 python compare_algorithms.py
-
-## Project Presentation
-The presentation file for this project is available [here](ppt1.pptx).
